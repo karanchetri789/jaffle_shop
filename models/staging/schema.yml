@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: A starter dbt model
+    columns:
+      - name: customer_id
+        description: Not Null condition for the table
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: A starter dbt model, This is the second table
+    columns:
+      - name: order_id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null
+  - name: stg_state
+    columns:
+      - name: state_code
+        tests:
+          - accepted_values:
+              values:
+                
+                 ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"]
